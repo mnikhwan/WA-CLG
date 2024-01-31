@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>WhatsApp Chat Link Generator</title>
+
+		<!-- font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+		<!-- end font -->
+		
+		<link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body style="font-family: 'JetBrains Mono', monospace !important;">
+		
+		<!-- Navigasi -->
+
+		<div class="navbar bg-base-200">
+			<div class="flex-1">
+				
+			  <a href="" class="btn btn-ghost text-xl">WA-CLG</a>
+			</div>
+			<div class="flex-none">
+				<span class="badge badge-outline text-lime-500 text-sm">Made With ✨ by <a href="https://www.instagram.com/mn.ikhwan/" target="_blank" rel="noopener noreferrer">@mn.ikhwan</a></span>
+				
+				<label class=" ml-4 mr-8 cursor-pointer grid place-items-center">
+					<input type="checkbox" value="cupcake" class="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"/>
+					<svg class="col-start-1 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+					<svg class="col-start-2 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+				  </label>
+			</div>
+		  </div>
+
+		<!-- END Navigasi -->
+
+
+		<!-- HERO SECTION -->
+
+		<div class="hero min-h-screen bg-base-100 mb-24">
+			<div class="hero-content flex-col lg:flex-row">
+			  <div class="text-center lg:text-left lg:max-w-lg lg:mx-6">
+				<h1 class="text-5xl font-bold">WhatsApp Chat Link Generator (WA-CLG)</h1>
+				<p class="py-6">Generator untuk fitur <span class="font-bold text-lime-500">Click to Chat</span> WhatsApp menggunakan tautan, dengan opsi untuk teks yang sudah diisi sebelumnya.</p>
+			  </div>
+			  <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+				<div class="card-body">
+				  <div class="form-control">
+					<label class="form-label label">
+						<span class="label-text">Kode Negara</span>
+					</label>
+							<select class="form-select mb-5 select select-bordered w-full max-w-xs" id="country-code">
+								<!-- <option value="0" selected disabled>Please Select</option> -->
+								<option selected value="62">Indonesia (+62)</option>
+								<optgroup label="Other Countries">
+									
+									<option value="44">UK (+44)</option>
+									<option value="1">USA (+1)</option>
+									
+								</optgroup>
+							</select>
+					
+							<label class="form-label label">
+								<span class="label-text">Nomor Whatsapp <span class="badge badge-outline text-red-500 font-bold">tanpa awalan angka <kbd class="kbd kbd-sm"> "0" </kbd>!</span> </span>
+							</label>
+							<input class="form-control input input-bordered" id="number" placeholder="contoh: 8133*******" required>
+				  </div>
+				  <div class="form-control">
+					<label class="label">
+					  <span class="label-text">Isi Pesan</span>
+					</label>
+					
+					<textarea class="form-control textarea textarea-bordered" id="message" placeholder="Halo Kak, Saya ingin..."></textarea>
+
+					<label class="label">
+						<span class="label-text">Hasil Link WhatsApp↴</span>
+					  </label>
+					  <div class="">
+						  <input class="text-red-500 form-control cursor-text input input-bordered w-full max-w-xs" id="display-link" readonly>
+						  <button class="kbd kbd-sm" onclick="copy();"> Copy Hasil📋</button>
+
+					  </div>
+
+					  
+							<dialog id="my_modal_1" class="modal">
+  								<div class="modal-box">
+    							<h3 class="font-bold text-lg">🎉| Selamat Url Telah di Salin!</h3>
+    							<p class="py-4 kbd kbd-sm" id="url-copy"></p>
+    							<div class="modal-action">
+      								<form method="dialog">
+        								<!-- if there is a button in form, it will close the modal -->
+       									 <button class="btn">Close</button>
+      							</form>
+   							 </div>
+  							</div>
+							</dialog>
+
+				  </div>
+				  <div class="form-control mt-6">
+					<button class="btn btn-primary" onclick="generateLink();">Generate Sekarang!</button>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+		<!-- END HERO SECTION -->
+		<footer class="footer footer-center p-4 bg-base-300 text-base-content">
+			<aside>
+			  <p>Copyright © 2024 - All right reserved by @mn.ikhwan</p>
+			</aside>
+		  </footer>
+
+		<script src="js/script.js"></script>
+	</body>
+</html>
